@@ -1,0 +1,5 @@
+tqdm
+pandas 
+cassandra-driver 
+kafka-python
+faker
