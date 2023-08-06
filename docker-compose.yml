@@ -1,0 +1,46 @@
+version: '3.9'
+
+networks:
+  cassandra-network:
+    driver: bridge
+
+services:
+  cassandra-seed:
+    image: cassandra:4.1.2
+    container_name: cassandra1
+    ports:
+      - 9042:9042
+    # volumes:
+    #   - ./mnt/cassandra:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=datahungry-cluster
+      - CASSANDRA_SEEDS=cassandra-seed
+    networks:
+      - cassandra-network
+
+  cassandra2:
+    image: cassandra:4.1.2
+    container_name: cassandra2
+    ports:
+      - 9043:9042
+    # volumes:
+    #   - ./mnt/cassandra:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=datahungry-cluster
+      - CASSANDRA_SEEDS=cassandra-seed
+    networks:
+      - cassandra-network
+
+  cassandra3:
+    image: cassandra:4.1.2
+    container_name: cassandra3
+    ports:
+      - 9044:9042
+    # volumes:
+    #   - ./mnt/cassandra:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=datahungry-cluster
+      - CASSANDRA_SEEDS=cassandra-seed
+    networks:
+      - cassandra-network
+      
